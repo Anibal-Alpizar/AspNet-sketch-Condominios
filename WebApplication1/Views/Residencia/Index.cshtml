@@ -1,62 +1,4 @@
-﻿@*@model IEnumerable<WebApplication1.Models.RESIDENCIA>
-
-    @{
-        ViewBag.Title = "Listado de residencias";
-    }
-
-    <style>
-        .titulo-pagina {
-            text-align: center;
-            font-size: 2rem;
-            color: #336699;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-    </style>
-
-    <h1 class="titulo-pagina">@ViewBag.Title</h1>
-    <style>
-        .card {
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-body {
-            padding: 1rem;
-        }
-
-        .btn-detalle {
-            margin: 1rem;
-        }
-
-        .container-tarjetas {
-            margin-top: 20px;
-        }
-    </style>
-
-    <div class="container-tarjetas d-flex justify-content-center flex-wrap">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">@item.USUARIO.FULLNAME</h5>
-                        <p class="card-text">Número de residencia: @item.NUMERO_RESIDENCIA</p>
-                        <p class="card-text">Cantidad de personas: @item.CANTIDAD_PERSONAS</p>
-                        <p class="card-text">Año de inicio: @item.ANIO_INICIO</p>
-                        <p class="card-text">Cantidad de carros: @item.CANTIDAD_CARROS</p>
-                        <a href="@Url.Action("Details", "Residencia", new { id = item.ID_RESIDENCIA })" class="btn btn-primary btn-detalle"><i class="fa-solid fa-circle-info"></i> Detalle</a>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>*@
-
-
-
-@model IEnumerable<WebApplication1.Models.RESIDENCIA>
+﻿@model IEnumerable<WebApplication1.Models.RESIDENCIA>
 
 @{
     ViewBag.Title = "Listado de residencias";
@@ -149,8 +91,6 @@
     </div>
 </div>
 
-
-
 <!-- Lista de residencias -->
 <div class="container-tarjetas d-flex justify-content-center flex-wrap">
     @foreach (var item in Model)
@@ -168,13 +108,13 @@
             </div>
         </div>
 
-        <!-- Modal Detalle de Residencia -->
+        <!-- Modal -->
         <div class="modal fade" id="modalDetalle_@item.ID_RESIDENCIA" tabindex="-1" role="dialog" aria-labelledby="modalDetalleLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalDetalleLabel">@item.USUARIO.FULLNAME</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title" id="modalDetalleLabel">@item.USUARIO.FULLNAME - @item.USUARIO.CORREO</h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close" style="position:absolute; top: 10px; right: 10px;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -183,13 +123,6 @@
                         <p>Cantidad de personas: @item.CANTIDAD_PERSONAS</p>
                         <p>Año de inicio: @item.ANIO_INICIO</p>
                         <p>Cantidad de carros: @item.CANTIDAD_CARROS</p>
-
-                        <!-- User info -->
-                        <h4>User info</h4>
-                        <dl class="dl-horizontal">
-                            <dd>@Html.DisplayNameFor(model => model.USUARIO.CORREO)</dd>
-                            <dd>@Html.DisplayFor(model => item.USUARIO.CORREO) </dd>
-                        </dl>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -197,6 +130,5 @@
                 </div>
             </div>
         </div>
-    }
-
+}
 </div>
