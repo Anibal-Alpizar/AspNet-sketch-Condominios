@@ -1,0 +1,101 @@
+﻿@model IEnumerable<WebApplication1.Models.GESTION_PLANES_COBRO>
+
+@{
+    ViewBag.Title = "Listado de planes de cobro";
+}
+
+<style>
+
+    .titulo-pagina {
+        text-align: center;
+        font-size: 2rem;
+        color: #336699;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .card-subtitle {
+        font-size: 1rem;
+        color: #4a5568;
+        margin-top: 0.5rem;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+        color: #4a5568;
+        margin: 0.25rem 0;
+    }
+
+    .card-label {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #718096;
+        margin-right: 0.5rem;
+    }
+
+    .card-body {
+        padding-bottom: 1.5rem;
+        margin-left: 1rem;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .btn {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .btn-group {
+        margin-top: 1rem;
+        margin-right: 5px;
+    }
+
+    .btn-group .btn:first-child {
+            margin-left: 0; /* Restaura el margen izquierdo a cero para el primer botón */
+    }
+</style>
+
+
+<div class="container">
+    <h1 class="titulo-pagina">@ViewBag.Title</h1>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body p-3" style="padding-bottom: 1.5rem;">
+                        <h5 class="card-title">Fecha Inicio: @Html.DisplayFor(modelItem => item.FECHA_INICIO)</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Fecha Fin: @Html.DisplayFor(modelItem => item.FECHA_FIN)</h6>
+                        <p class="card-text">Monto: @Html.DisplayFor(modelItem => item.MONTO)</p>
+                        <p class="card-text">Frecuencia de Cobro: @Html.DisplayFor(modelItem => item.FRECUENCIA_COBRO)</p>
+                        <p class="card-text">Estado de Cobro: @Html.DisplayFor(modelItem => item.ESTADO_COBRO)</p>
+                        <p class="card-text">Usuario: @Html.DisplayFor(modelItem => item.USUARIO.FULLNAME)</p>
+                        <div class="btn-group d-grid">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID_PLAN_COBRO }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Details", "Details", new { id = item.ID_PLAN_COBRO }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID_PLAN_COBRO }, new { @class = "btn btn-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
