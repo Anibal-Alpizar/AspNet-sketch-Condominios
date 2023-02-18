@@ -14,10 +14,11 @@ namespace WebApplication1.Controllers
 
         public ActionResult Index()
         {
-            List<RESIDENCIA> lista = new List<RESIDENCIA>();
+            List<RESIDENCIA> lista = null;
             using (CONDOMINIOSEntities ctx = new CONDOMINIOSEntities())
             {
-                lista = ctx.RESIDENCIA.ToList();
+                // lista = ctx.RESIDENCIA.ToList();
+                lista = ctx.RESIDENCIA.Include(x => x.USUARIO).ToList();
             }
             return View(lista);
         }
