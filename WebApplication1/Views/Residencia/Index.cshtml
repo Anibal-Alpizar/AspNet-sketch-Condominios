@@ -1,4 +1,62 @@
-﻿@model IEnumerable<WebApplication1.Models.RESIDENCIA>
+﻿@*@model IEnumerable<WebApplication1.Models.RESIDENCIA>
+
+    @{
+        ViewBag.Title = "Listado de residencias";
+    }
+
+    <style>
+        .titulo-pagina {
+            text-align: center;
+            font-size: 2rem;
+            color: #336699;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <h1 class="titulo-pagina">@ViewBag.Title</h1>
+    <style>
+        .card {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-body {
+            padding: 1rem;
+        }
+
+        .btn-detalle {
+            margin: 1rem;
+        }
+
+        .container-tarjetas {
+            margin-top: 20px;
+        }
+    </style>
+
+    <div class="container-tarjetas d-flex justify-content-center flex-wrap">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.USUARIO.FULLNAME</h5>
+                        <p class="card-text">Número de residencia: @item.NUMERO_RESIDENCIA</p>
+                        <p class="card-text">Cantidad de personas: @item.CANTIDAD_PERSONAS</p>
+                        <p class="card-text">Año de inicio: @item.ANIO_INICIO</p>
+                        <p class="card-text">Cantidad de carros: @item.CANTIDAD_CARROS</p>
+                        <a href="@Url.Action("Details", "Residencia", new { id = item.ID_RESIDENCIA })" class="btn btn-primary btn-detalle"><i class="fa-solid fa-circle-info"></i> Detalle</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>*@
+
+
+
+@model IEnumerable<WebApplication1.Models.RESIDENCIA>
 
 @{
     ViewBag.Title = "Listado de residencias";
@@ -15,6 +73,7 @@
 </style>
 
 <h1 class="titulo-pagina">@ViewBag.Title</h1>
+
 <style>
     .card {
         margin-bottom: 20px;
@@ -34,8 +93,65 @@
     .container-tarjetas {
         margin-top: 20px;
     }
+
+    /* Estilos para el modal */
+    .modal-backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+        background-color: #336699;
+        color: white;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .modal-body {
+        padding: 1rem;
+    }
+
+    .modal-footer {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
 </style>
 
+<!-- Botón para abrir el modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDetalle" style="display:none;">
+    Detalle
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalDetalle" tabindex="-1" aria-labelledby="modalDetalleLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalDetalleLabel">Detalles de la residencia</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div id="modalDetalleContent"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Lista de residencias -->
 <div class="container-tarjetas d-flex justify-content-center flex-wrap">
     @foreach (var item in Model)
     {
@@ -47,9 +163,40 @@
                     <p class="card-text">Cantidad de personas: @item.CANTIDAD_PERSONAS</p>
                     <p class="card-text">Año de inicio: @item.ANIO_INICIO</p>
                     <p class="card-text">Cantidad de carros: @item.CANTIDAD_CARROS</p>
-                    <a href="@Url.Action("Details", "Residencia", new { id = item.ID_RESIDENCIA })" class="btn btn-primary btn-detalle"><i class="fa-solid fa-circle-info"></i> Detalle</a>
+                    <button type="button" class="btn btn-primary btn-detalle" data-toggle="modal" data-target="#modalDetalle_@item.ID_RESIDENCIA"><i class="fa-solid fa-circle-info"></i> Detalle</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Detalle de Residencia -->
+        <div class="modal fade" id="modalDetalle_@item.ID_RESIDENCIA" tabindex="-1" role="dialog" aria-labelledby="modalDetalleLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalDetalleLabel">@item.USUARIO.FULLNAME</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Número de residencia: @item.NUMERO_RESIDENCIA</p>
+                        <p>Cantidad de personas: @item.CANTIDAD_PERSONAS</p>
+                        <p>Año de inicio: @item.ANIO_INICIO</p>
+                        <p>Cantidad de carros: @item.CANTIDAD_CARROS</p>
+
+                        <!-- User info -->
+                        <h4>User info</h4>
+                        <dl class="dl-horizontal">
+                            @*<dt>@Html.DisplayNameFor(model => item.USUARIO.CORREO)</dt>*@
+                            <dd>@Html.DisplayFor(model => item.USUARIO.CORREO) </dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
                 </div>
             </div>
         </div>
     }
+
 </div>
