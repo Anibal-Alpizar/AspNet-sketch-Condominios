@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WebApplication1.Models.NOTICIA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TITULO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CONTENIDO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA_PUBLICACION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_NOTICIA.TIPO_NOTICIA_INFO)
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TITULO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CONTENIDO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHA_PUBLICACION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPO_NOTICIA.TIPO_NOTICIA_INFO)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_NOTICIA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_NOTICIA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_NOTICIA })
+        </td>
+    </tr>
+}
+
+</table>

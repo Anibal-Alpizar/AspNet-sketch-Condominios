@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebApplication1.Models.RESIDENCIA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NUMERO_RESIDENCIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USUARIO.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CANTIDAD_PERSONAS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ANIO_INICIO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CANTIDAD_CARROS)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NUMERO_RESIDENCIA)
+        </td>
+        <th>
+            @Html.DisplayNameFor(model => model.USUARIO.NOMBRE)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.CANTIDAD_PERSONAS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ANIO_INICIO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CANTIDAD_CARROS)
+        </td>
+        <td>
+            <a href="@Url.Action("Details", "Residencia", new { id = item.ID_RESIDENCIA })" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i> Detalle</a>
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,75 @@
+﻿@model WebApplication1.Models.RESIDENCIA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RESIDENCIA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NUMERO_RESIDENCIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NUMERO_RESIDENCIA)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO.NOMBRE)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO.FULLNAME)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CANTIDAD_PERSONAS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANTIDAD_PERSONAS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANIO_INICIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANIO_INICIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTADO_RESIDENCIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTADO_RESIDENCIA.ESTADO_RESIDENCIA1)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CANTIDAD_CARROS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANTIDAD_CARROS)
+        </dd>
+
+        <h1>
+            User info
+        </h1>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO.CORREO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO.CORREO)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_RESIDENCIA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
