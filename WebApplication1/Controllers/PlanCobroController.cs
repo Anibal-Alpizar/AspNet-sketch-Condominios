@@ -28,5 +28,25 @@ namespace WebApplication1.Controllers
             }
             return View(listaPlanesCobro);
         }
+        public ActionResult Details(int? id)
+        {
+            GESTION_PLANES_COBRO oPlanCobro = null;
+            try
+            {
+                using (CONDOMINIOSEntities ctx = new CONDOMINIOSEntities())
+                {
+                    ctx.Configuration.LazyLoadingEnabled = false;
+                    oPlanCobro = ctx.GESTION_PLANES_COBRO
+                        .Where(l => l.ID_PLAN_COBRO == id)
+                        .Include(x => x.USUARIO).Include(x => x.USUARIO.ESTADO_USUARIO)
+                        .FirstOrDefault();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            return View(oPlanCobro);
+        }
     }
 }

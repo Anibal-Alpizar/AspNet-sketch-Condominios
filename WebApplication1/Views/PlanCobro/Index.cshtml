@@ -64,9 +64,9 @@
         margin-right: 5px;
     }
 
-    .btn-group .btn:first-child {
+        .btn-group .btn:first-child {
             margin-left: 0; /* Restaura el margen izquierdo a cero para el primer botón */
-    }
+        }
 </style>
 
 
@@ -78,16 +78,18 @@
             <div class="col">
                 <div class="card h-100">
                     <div class="card-body p-3" style="padding-bottom: 1.5rem;">
-                        <h5 class="card-title">Fecha Inicio: @Html.DisplayFor(modelItem => item.FECHA_INICIO)</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Fecha Fin: @Html.DisplayFor(modelItem => item.FECHA_FIN)</h6>
+                        <!-- Card title -->
+                        <h5 class="card-title">
+                            <strong>@Html.DisplayFor(modelItem => item.USUARIO.FULLNAME)</strong>
+                            - Plan de cobro #PC-@Html.DisplayFor(modelItem => item.ID_PLAN_COBRO)
+                        </h5>
                         <p class="card-text">Monto: @Html.DisplayFor(modelItem => item.MONTO)</p>
-                        <p class="card-text">Frecuencia de Cobro: @Html.DisplayFor(modelItem => item.FRECUENCIA_COBRO)</p>
-                        <p class="card-text">Estado de Cobro: @Html.DisplayFor(modelItem => item.ESTADO_COBRO)</p>
-                        <p class="card-text">Usuario: @Html.DisplayFor(modelItem => item.USUARIO.FULLNAME)</p>
+                        <p class="card-text">Fecha Fin: @Html.DisplayFor(modelItem => item.FECHA_FIN)</p>
+                        <!-- Detail button -->
                         <div class="btn-group d-grid">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID_PLAN_COBRO }, new { @class = "btn btn-primary" })
-                            @Html.ActionLink("Details", "Details", new { id = item.ID_PLAN_COBRO }, new { @class = "btn btn-primary" })
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ID_PLAN_COBRO }, new { @class = "btn btn-danger" })
+                            <button type="button" class="btn btn-primary btn-detalle" data-toggle="modal" data-target="#modalDetalle_@item.ID_PLAN_COBRO">
+                                <i class="fa-solid fa-circle-info"></i> Detalle
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -95,6 +97,33 @@
         }
     </div>
 </div>
+
+
+<!-- Modal -->
+@foreach (var item in Model)
+{
+    <div class="modal fade" id="modalDetalle_@item.ID_PLAN_COBRO" tabindex="-1" role="dialog" aria-labelledby="modalDetalleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="modalDetalleLabel">@item.USUARIO.FULLNAME - @item.USUARIO.CORREO</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close" style="position:absolute; top: 10px; right: 10px;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Número de residencia: @item.FECHA_INICIO</p>
+                    <p>Cantidad de personas: @item.FECHA_FIN</p>
+                    <p>Año de inicio: @item.ID_PLAN_COBRO</p>
+                    <p>Cantidad de carros: @item.ESTADO_COBRO</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 
 
 
