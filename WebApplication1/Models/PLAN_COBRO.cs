@@ -18,7 +18,6 @@ namespace WebApplication1.Models
         public PLAN_COBRO()
         {
             this.RESIDENCIA = new HashSet<RESIDENCIA>();
-            this.RUBRO_COBRO = new HashSet<RUBRO_COBRO>();
         }
     
         public int ID_PLAN_COBRO { get; set; }
@@ -27,7 +26,6 @@ namespace WebApplication1.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RESIDENCIA> RESIDENCIA { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RUBRO_COBRO> RUBRO_COBRO { get; set; }
+        public virtual RUBRO_COBRO RUBRO_COBRO { get; set; }
     }
 }

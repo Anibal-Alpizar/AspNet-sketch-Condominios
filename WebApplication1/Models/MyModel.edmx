@@ -102,12 +102,9 @@
           <Property Name="NOMBRE_PLAN" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'CONDOMINIOS.dbo.PLAN_COBRO_RUBRO_COBRO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PLAN_COBRO_RUBRO_COBRO">
           <Key>
             <PropertyRef Name="ID_PLAN_COBRO" />
-            <PropertyRef Name="ID_RUBRO_COBRO" />
           </Key>
           <Property Name="ID_PLAN_COBRO" Type="int" Nullable="false" />
           <Property Name="ID_RUBRO_COBRO" Type="int" Nullable="false" />
@@ -290,7 +287,7 @@ warning 6002: The table/view 'CONDOMINIOS.dbo.PLAN_COBRO_RUBRO_COBRO' does not h
         </Association>
         <Association Name="FK__PLAN_COBR__ID_PL__5CD6CB2B">
           <End Role="PLAN_COBRO" Type="Self.PLAN_COBRO" Multiplicity="1" />
-          <End Role="PLAN_COBRO_RUBRO_COBRO" Type="Self.PLAN_COBRO_RUBRO_COBRO" Multiplicity="*" />
+          <End Role="PLAN_COBRO_RUBRO_COBRO" Type="Self.PLAN_COBRO_RUBRO_COBRO" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="PLAN_COBRO">
               <PropertyRef Name="ID_PLAN_COBRO" />
@@ -480,6 +477,7 @@ warning 6002: The table/view 'CONDOMINIOS.dbo.PLAN_COBRO_RUBRO_COBRO' does not h
           <EntitySet Name="INCIDENCIA" EntityType="Self.INCIDENCIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NOTICIA" EntityType="Self.NOTICIA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PLAN_COBRO" EntityType="Self.PLAN_COBRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PLAN_COBRO_RUBRO_COBRO" EntityType="Self.PLAN_COBRO_RUBRO_COBRO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="REPORTES" EntityType="Self.REPORTES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RESERVA_AREA_COMUN" EntityType="Self.RESERVA_AREA_COMUN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RESERVACION" EntityType="Self.RESERVACION" Schema="dbo" store:Type="Tables" />
@@ -490,12 +488,6 @@ warning 6002: The table/view 'CONDOMINIOS.dbo.PLAN_COBRO_RUBRO_COBRO' does not h
           <EntitySet Name="TIPO_REPORTE" EntityType="Self.TIPO_REPORTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PLAN_COBRO_RUBRO_COBRO" EntityType="Self.PLAN_COBRO_RUBRO_COBRO" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PLAN_COBRO_RUBRO_COBRO].[ID_PLAN_COBRO] AS [ID_PLAN_COBRO], 
-    [PLAN_COBRO_RUBRO_COBRO].[ID_RUBRO_COBRO] AS [ID_RUBRO_COBRO]
-    FROM [dbo].[PLAN_COBRO_RUBRO_COBRO] AS [PLAN_COBRO_RUBRO_COBRO]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__GESTION_D__ID_ES__6B24EA82" Association="Self.FK__GESTION_D__ID_ES__6B24EA82">
             <End Role="ESTADO_DEUDA" EntitySet="ESTADO_DEUDA" />
             <End Role="GESTION_DEUDA" EntitySet="GESTION_DEUDA" />
@@ -895,7 +887,7 @@ warning 6002: The table/view 'CONDOMINIOS.dbo.PLAN_COBRO_RUBRO_COBRO' does not h
         </Association>
         <Association Name="PLAN_COBRO_RUBRO_COBRO">
           <End Role="PLAN_COBRO" Type="Self.PLAN_COBRO" Multiplicity="*" />
-          <End Role="RUBRO_COBRO" Type="Self.RUBRO_COBRO" Multiplicity="*" />
+          <End Role="RUBRO_COBRO" Type="Self.RUBRO_COBRO" Multiplicity="0..1" />
         </Association>
         <EntityContainer Name="CONDOMINIOSEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AREA_COMUN" EntityType="Self.AREA_COMUN" />

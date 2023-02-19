@@ -81,8 +81,6 @@ C:\Users\Estudiante\source\repos\WebApplication1\WebApplication1\obj\Debug\WebAp
 C:\Users\Estudiante\source\repos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 C:\Users\Estudiante\source\repos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\Estudiante\source\repos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
-C:\Users\anibal\Desktop\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.AssemblyReference.cache
-C:\Users\anibal\Desktop\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
 C:\Users\anibal\Desktop\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
 C:\Users\anibal\Desktop\WebApplication1\WebApplication1\bin\WebApplication1.dll
 C:\Users\anibal\Desktop\WebApplication1\WebApplication1\bin\WebApplication1.pdb
@@ -161,6 +159,8 @@ C:\Users\anibal\Desktop\WebApplication1\WebApplication1\bin\System.Web.WebPages.
 C:\Users\anibal\Desktop\WebApplication1\WebApplication1\bin\Newtonsoft.Json.xml
 C:\Users\anibal\Desktop\WebApplication1\WebApplication1\bin\Antlr3.Runtime.pdb
 C:\Users\anibal\Desktop\WebApplication1\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\anibal\Desktop\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.AssemblyReference.cache
+C:\Users\anibal\Desktop\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
 C:\Users\anibal\Desktop\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
 C:\Users\anibal\Desktop\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\anibal\Desktop\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb

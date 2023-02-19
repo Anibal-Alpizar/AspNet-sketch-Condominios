@@ -309,7 +309,7 @@
   </Association>
   <Association Name="PLAN_COBRO_RUBRO_COBRO">
     <End Role="PLAN_COBRO" Type="Self.PLAN_COBRO" Multiplicity="*" />
-    <End Role="RUBRO_COBRO" Type="Self.RUBRO_COBRO" Multiplicity="*" />
+    <End Role="RUBRO_COBRO" Type="Self.RUBRO_COBRO" Multiplicity="0..1" />
   </Association>
   <EntityContainer Name="CONDOMINIOSEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AREA_COMUN" EntityType="Self.AREA_COMUN" />

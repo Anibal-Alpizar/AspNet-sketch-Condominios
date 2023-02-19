@@ -133,6 +133,7 @@
     <Compile Include="Controllers\NoticiaController.cs" />
     <Compile Include="Controllers\PlanCobroController.cs" />
     <Compile Include="Controllers\ResidenciaController.cs" />
+    <Compile Include="Controllers\RubrosCobrosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -274,6 +275,7 @@
     <Content Include="Views\Residencia\Index.cshtml" />
     <Content Include="Views\PlanCobro\Index.cshtml" />
     <Content Include="Views\PlanCobro\Details.cshtml" />
+    <Content Include="Views\RubrosCobros\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
