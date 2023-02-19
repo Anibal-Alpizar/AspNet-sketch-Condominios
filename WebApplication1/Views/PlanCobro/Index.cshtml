@@ -112,10 +112,28 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Número de residencia: @item.FECHA_INICIO</p>
-                    <p>Cantidad de personas: @item.FECHA_FIN</p>
-                    <p>Año de inicio: @item.ID_PLAN_COBRO</p>
-                    <p>Cantidad de carros: @item.ESTADO_COBRO</p>
+                    <dl class="row">
+                        <dt class="col-sm-3">ID de usuario:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => item.USUARIO.ID_USUARIO)</dd>
+
+                        <dt class="col-sm-3">Nombre completo:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => item.USUARIO.FULLNAME)</dd>
+
+                        <dt class="col-sm-3">Correo electrónico:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => item.USUARIO.CORREO)</dd>
+
+                        <dt class="col-sm-3">Fecha de inicio:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => item.FECHA_INICIO)</dd>
+
+                        <dt class="col-sm-3">Fecha de fin:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => item.FECHA_FIN)</dd>
+
+                        <dt class="col-sm-3">Monto:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => item.MONTO)</dd>
+
+                        <dt class="col-sm-3">Estado de cobro:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => item.ESTADO_COBRO)</dd>
+                    </dl>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
