@@ -11,7 +11,8 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.EnterpriseServices.Internal;
+
     public partial class RUBRO_COBRO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,7 +24,10 @@ namespace WebApplication1.Models
         public int ID_RUBRO_COBRO { get; set; }
         public string NOMBRE_RUBRO { get; set; }
         public decimal MONTO { get; set; }
-    
+        public byte[] IMAGEN { get; set; }
+        public string IMAGEN_BASE64 { get; set; }
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PLAN_COBRO> PLAN_COBRO { get; set; }
     }

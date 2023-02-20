@@ -55,10 +55,12 @@
       <PropertyRef Name="ID_GESTION_DEUDA" />
     </Key>
     <Property Name="ID_GESTION_DEUDA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_RESIDENCIA" Type="Int32" Nullable="false" />
     <Property Name="MES" Type="Int32" Nullable="false" />
     <Property Name="ANIO" Type="Int32" Nullable="false" />
     <Property Name="MONTO" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="FECHA_VENCIMIENTO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ID_ESTADO_DEUDA" Type="Int32" Nullable="false" />
     <Property Name="DETALLES_RUBROS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="FECHA_REGISTRO" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="FECHA_PAGO" Type="DateTime" Nullable="false" Precision="3" />
@@ -70,6 +72,7 @@
       <PropertyRef Name="ID_PLAN_COBRO" />
     </Key>
     <Property Name="ID_PLAN_COBRO" Type="Int32" Nullable="false" />
+    <Property Name="ID_RESIDENTE" Type="Int32" Nullable="false" />
     <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="FECHA_FIN" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="MONTO" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
@@ -82,6 +85,8 @@
       <PropertyRef Name="ID_INCIDENCIA" />
     </Key>
     <Property Name="ID_INCIDENCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="ID_ESTADO_INCIDENCIA" Type="Int32" Nullable="false" />
     <Property Name="DESCRIPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="ESTADO_INCIDENCIA" Relationship="Self.FK__INCIDENCI__ID_ES__4316F928" FromRole="INCIDENCIA" ToRole="ESTADO_INCIDENCIA" />
@@ -92,6 +97,7 @@
       <PropertyRef Name="ID_NOTICIA" />
     </Key>
     <Property Name="ID_NOTICIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_TIPO_NOTICIA" Type="Int32" Nullable="false" />
     <Property Name="TITULO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="CONTENIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="FECHA_PUBLICACION" Type="DateTime" Nullable="false" Precision="3" />
@@ -112,6 +118,7 @@
       <PropertyRef Name="ID_REPORTE" />
     </Key>
     <Property Name="ID_REPORTE" Type="Int32" Nullable="false" />
+    <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
     <Property Name="report_type_id" Type="Int32" Nullable="false" />
     <Property Name="report_date" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="report_data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
@@ -123,9 +130,12 @@
       <PropertyRef Name="ID_RESERVA_AREA_COMUN" />
     </Key>
     <Property Name="ID_RESERVA_AREA_COMUN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="ID_AREA_COMUN" Type="Int32" Nullable="false" />
     <Property Name="FECHA_RESERVA" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="HORA_INICIO" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="HORA_FIN" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ID_ESTADO_RESERVACION" Type="Int32" Nullable="false" />
     <Property Name="COMENTARIOS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="FECHA_ACTUALIZACION" Type="DateTime" Nullable="false" Precision="3" />
@@ -140,6 +150,9 @@
       <PropertyRef Name="ID_RESERVACION" />
     </Key>
     <Property Name="ID_RESERVACION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="ID_AREA_COMUN" Type="Int32" Nullable="false" />
+    <Property Name="ID_ESTADO_RESERVACION" Type="Int32" Nullable="false" />
     <Property Name="FECHA_RESERVACION" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="FECHA_FIN_RESERVACION" Type="DateTime" Nullable="false" Precision="3" />
@@ -152,10 +165,13 @@
       <PropertyRef Name="ID_RESIDENCIA" />
     </Key>
     <Property Name="ID_RESIDENCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_ESTADO_RESIDENCIA" Type="Int32" Nullable="false" />
     <Property Name="NUMERO_RESIDENCIA" Type="Int32" Nullable="false" />
     <Property Name="CANTIDAD_PERSONAS" Type="Int32" Nullable="false" />
     <Property Name="ANIO_INICIO" Type="Int32" Nullable="false" />
     <Property Name="CANTIDAD_CARROS" Type="Int32" Nullable="false" />
+    <Property Name="ID_USUARIO" Type="Int32" />
+    <Property Name="ID_PLAN_COBRO" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ESTADO_RESIDENCIA" Relationship="Self.FK__RESIDENCI__ID_ES__571DF1D5" FromRole="RESIDENCIA" ToRole="ESTADO_RESIDENCIA" />
     <NavigationProperty Name="GESTION_DEUDA" Relationship="Self.FK__GESTION_D__ID_RE__6A30C649" FromRole="RESIDENCIA" ToRole="GESTION_DEUDA" />
     <NavigationProperty Name="PLAN_COBRO" Relationship="Self.FK__RESIDENCI__ID_PL__797309D9" FromRole="RESIDENCIA" ToRole="PLAN_COBRO" />
@@ -168,6 +184,7 @@
     <Property Name="ID_RUBRO_COBRO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NOMBRE_RUBRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MONTO" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="IMAGEN" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="PLAN_COBRO" Relationship="Self.PLAN_COBRO_RUBRO_COBRO" FromRole="RUBRO_COBRO" ToRole="PLAN_COBRO" />
   </EntityType>
   <EntityType Name="sysdiagrams">
@@ -210,6 +227,8 @@
       <PropertyRef Name="ID_USUARIO" />
     </Key>
     <Property Name="ID_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_TIPO_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="ID_ESTADO" Type="Int32" Nullable="false" />
     <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="CORREO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -226,54 +245,158 @@
   <Association Name="FK__RESERVA_A__ID_AR__6383C8BA">
     <End Role="AREA_COMUN" Type="Self.AREA_COMUN" Multiplicity="1" />
     <End Role="RESERVA_AREA_COMUN" Type="Self.RESERVA_AREA_COMUN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AREA_COMUN">
+        <PropertyRef Name="ID_AREA_COMUN" />
+      </Principal>
+      <Dependent Role="RESERVA_AREA_COMUN">
+        <PropertyRef Name="ID_AREA_COMUN" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__RESERVACI__ID_AR__5165187F">
     <End Role="AREA_COMUN" Type="Self.AREA_COMUN" Multiplicity="1" />
     <End Role="RESERVACION" Type="Self.RESERVACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AREA_COMUN">
+        <PropertyRef Name="ID_AREA_COMUN" />
+      </Principal>
+      <Dependent Role="RESERVACION">
+        <PropertyRef Name="ID_AREA_COMUN" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__GESTION_D__ID_ES__6B24EA82">
     <End Role="ESTADO_DEUDA" Type="Self.ESTADO_DEUDA" Multiplicity="1" />
     <End Role="GESTION_DEUDA" Type="Self.GESTION_DEUDA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_DEUDA">
+        <PropertyRef Name="ID_ESTADO_DEUDA" />
+      </Principal>
+      <Dependent Role="GESTION_DEUDA">
+        <PropertyRef Name="ID_ESTADO_DEUDA" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__INCIDENCI__ID_ES__4316F928">
     <End Role="ESTADO_INCIDENCIA" Type="Self.ESTADO_INCIDENCIA" Multiplicity="1" />
     <End Role="INCIDENCIA" Type="Self.INCIDENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_INCIDENCIA">
+        <PropertyRef Name="ID_ESTADO_INCIDENCIA" />
+      </Principal>
+      <Dependent Role="INCIDENCIA">
+        <PropertyRef Name="ID_ESTADO_INCIDENCIA" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__RESERVA_A__ID_ES__6477ECF3">
     <End Role="ESTADO_RESERVACION" Type="Self.ESTADO_RESERVACION" Multiplicity="1" />
     <End Role="RESERVA_AREA_COMUN" Type="Self.RESERVA_AREA_COMUN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_RESERVACION">
+        <PropertyRef Name="ID_ESTADO_RESERVACION" />
+      </Principal>
+      <Dependent Role="RESERVA_AREA_COMUN">
+        <PropertyRef Name="ID_ESTADO_RESERVACION" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__RESERVACI__ID_ES__52593CB8">
     <End Role="ESTADO_RESERVACION" Type="Self.ESTADO_RESERVACION" Multiplicity="1" />
     <End Role="RESERVACION" Type="Self.RESERVACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_RESERVACION">
+        <PropertyRef Name="ID_ESTADO_RESERVACION" />
+      </Principal>
+      <Dependent Role="RESERVACION">
+        <PropertyRef Name="ID_ESTADO_RESERVACION" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__RESIDENCI__ID_ES__571DF1D5">
     <End Role="ESTADO_RESIDENCIA" Type="Self.ESTADO_RESIDENCIA" Multiplicity="1" />
     <End Role="RESIDENCIA" Type="Self.RESIDENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_RESIDENCIA">
+        <PropertyRef Name="ID_ESTADO_RESIDENCIA" />
+      </Principal>
+      <Dependent Role="RESIDENCIA">
+        <PropertyRef Name="ID_ESTADO_RESIDENCIA" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__USUARIO__ID_ESTA__3C69FB99">
     <End Role="ESTADO_USUARIO" Type="Self.ESTADO_USUARIO" Multiplicity="1" />
     <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_USUARIO">
+        <PropertyRef Name="ID_ESTADO" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="ID_ESTADO" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__GESTION_D__ID_RE__6A30C649">
     <End Role="RESIDENCIA" Type="Self.RESIDENCIA" Multiplicity="1" />
     <End Role="GESTION_DEUDA" Type="Self.GESTION_DEUDA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESIDENCIA">
+        <PropertyRef Name="ID_RESIDENCIA" />
+      </Principal>
+      <Dependent Role="GESTION_DEUDA">
+        <PropertyRef Name="ID_RESIDENCIA" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__GESTION_P__ID_RE__6E01572D">
     <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
     <End Role="GESTION_PLANES_COBRO" Type="Self.GESTION_PLANES_COBRO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="GESTION_PLANES_COBRO">
+        <PropertyRef Name="ID_RESIDENTE" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__INCIDENCI__ID_US__4222D4EF">
     <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
     <End Role="INCIDENCIA" Type="Self.INCIDENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="INCIDENCIA">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__NOTICIA__ID_TIPO__48CFD27E">
     <End Role="TIPO_NOTICIA" Type="Self.TIPO_NOTICIA" Multiplicity="1" />
     <End Role="NOTICIA" Type="Self.NOTICIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_NOTICIA">
+        <PropertyRef Name="ID_TIPO_NOTICIA" />
+      </Principal>
+      <Dependent Role="NOTICIA">
+        <PropertyRef Name="ID_TIPO_NOTICIA" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__RESIDENCI__ID_PL__797309D9">
     <End Role="PLAN_COBRO" Type="Self.PLAN_COBRO" Multiplicity="1" />
     <End Role="RESIDENCIA" Type="Self.RESIDENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PLAN_COBRO">
+        <PropertyRef Name="ID_PLAN_COBRO" />
+      </Principal>
+      <Dependent Role="RESIDENCIA">
+        <PropertyRef Name="ID_PLAN_COBRO" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__REPORTES__ID_REP__778AC167">
     <End Role="TIPO_REPORTE" Type="Self.TIPO_REPORTE" Multiplicity="1" />
@@ -290,26 +413,66 @@
   <Association Name="FK__REPORTES__ID_USU__76969D2E">
     <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
     <End Role="REPORTES" Type="Self.REPORTES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="REPORTES">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__RESERVA_A__ID_US__628FA481">
     <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
     <End Role="RESERVA_AREA_COMUN" Type="Self.RESERVA_AREA_COMUN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="RESERVA_AREA_COMUN">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__RESERVACI__ID_US__5070F446">
     <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
     <End Role="RESERVACION" Type="Self.RESERVACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="RESERVACION">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__RESIDENCI__ID_US__787EE5A0">
     <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
     <End Role="RESIDENCIA" Type="Self.RESIDENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_USUARIO" />
+      </Principal>
+      <Dependent Role="RESIDENCIA">
+        <PropertyRef Name="ID_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="FK__USUARIO__ID_TIPO__3B75D760">
     <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1" />
     <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_USUARIO">
+        <PropertyRef Name="ID_TIPO_USUARIO" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="ID_TIPO_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
   <Association Name="PLAN_COBRO_RUBRO_COBRO">
     <End Role="PLAN_COBRO" Type="Self.PLAN_COBRO" Multiplicity="*" />
-    <End Role="RUBRO_COBRO" Type="Self.RUBRO_COBRO" Multiplicity="0..1" />
+    <End Role="RUBRO_COBRO" Type="Self.RUBRO_COBRO" Multiplicity="*" />
   </Association>
   <EntityContainer Name="CONDOMINIOSEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AREA_COMUN" EntityType="Self.AREA_COMUN" />

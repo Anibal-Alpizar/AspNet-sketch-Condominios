@@ -14,13 +14,13 @@ namespace WebApplication1.Controllers
         // GET: RubrosCobros
         public ActionResult Index()
         {
-            List<PLAN_COBRO> list = null;
+            List<RUBRO_COBRO> list = null;
             try
             {
                 using (CONDOMINIOSEntities ctx = new CONDOMINIOSEntities())
                 {
                     ctx.Configuration.LazyLoadingEnabled = false;
-                    list = ctx.PLAN_COBRO.Include(x => x.RUBRO_COBRO).ToList();
+                    list = ctx.RUBRO_COBRO.ToList();                 
                 }
             }
             catch
